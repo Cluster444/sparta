@@ -2,6 +2,10 @@ class Raid < ActiveRecord::Base
   belongs_to :city
   belongs_to :player
 
+  def self.last_week
+    where('raided_at > ?', Time.now - 1.week)
+  end
+
   def total_resources
     timber + bronze + food
   end
