@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140607173753) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cities", force: true do |t|
     t.integer  "player_id"
     t.string   "name"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140607173753) do
     t.datetime "updated_at"
   end
 
-  add_index "cities", ["player_id"], name: "index_cities_on_player_id"
+  add_index "cities", ["player_id"], name: "index_cities_on_player_id", using: :btree
 
   create_table "players", force: true do |t|
     t.string   "name"
@@ -44,8 +47,8 @@ ActiveRecord::Schema.define(version: 20140607173753) do
     t.datetime "scouted_at"
   end
 
-  add_index "raids", ["city_id"], name: "index_raids_on_city_id"
-  add_index "raids", ["player_id"], name: "index_raids_on_player_id"
+  add_index "raids", ["city_id"], name: "index_raids_on_city_id", using: :btree
+  add_index "raids", ["player_id"], name: "index_raids_on_player_id", using: :btree
 
   create_table "scouts", force: true do |t|
     t.integer  "player_id"
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140607173753) do
     t.datetime "updated_at"
   end
 
-  add_index "scouts", ["city_id"], name: "index_scouts_on_city_id"
-  add_index "scouts", ["player_id"], name: "index_scouts_on_player_id"
+  add_index "scouts", ["city_id"], name: "index_scouts_on_city_id", using: :btree
+  add_index "scouts", ["player_id"], name: "index_scouts_on_player_id", using: :btree
 
 end
