@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140607150039) do
+ActiveRecord::Schema.define(version: 20140607173753) do
 
   create_table "cities", force: true do |t|
     t.integer  "player_id"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20140607150039) do
     t.integer  "capacity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "raided_at"
+    t.datetime "scouted_at"
   end
 
   add_index "raids", ["city_id"], name: "index_raids_on_city_id"
