@@ -1,0 +1,32 @@
+<h1>Listing raids</h1>
+
+<%= link_to 'Player', [@player] %> |
+<%= link_to 'City', [@player, @city] %> |
+<%= link_to 'New Raid', [:new, @player, @city, :raid] %>
+<br>
+<table>
+  <thead>
+    <tr>
+      <td>Timber</td>
+      <td>Bronze</td>
+      <td>Food</td>
+      <td>Total</td>
+      <td>Capacity</td>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @raids.each do |raid| %>
+      <tr>
+        <td><%= raid.timber %></td>
+        <td><%= raid.bronze %></td>
+        <td><%= raid.food %></td>
+        <td><%= raid.total_resources %></td>
+        <td><%= raid.capacity %> (<%= raid.capacity_pct %>%)</td>
+        <td><%= link_to 'Edit', edit_player_city_raid_path(@player, @city, raid) %></td>
+        <td><%= link_to 'Destroy', [@player, @city, raid], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,33 @@
+<%= form_for([@player, @city, @raid]) do |f| %>
+  <% if @raid.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@raid.errors.count, "error") %> prohibited this raid from being saved:</h2>
+
+      <ul>
+      <% @raid.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :timber %>
+    <%= f.number_field :timber %>
+  </div>
+  <div class="field">
+    <%= f.label :bronze %>
+    <%= f.number_field :bronze %>
+  </div>
+  <div class="field">
+    <%= f.label :food %>
+    <%= f.number_field :food %>
+  </div>
+  <div class="field">
+    <%= f.label :capacity %>
+    <%= f.number_field :capacity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

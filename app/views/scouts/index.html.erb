@@ -1,0 +1,30 @@
+<h1>Listing scouts</h1>
+
+<%= link_to 'Player', [@player] %> |
+<%= link_to 'City', [@player, @city] %> |
+<%= link_to 'New Scout', [:new, @player, @city, :scout] %>
+<br />
+<table>
+  <thead>
+    <tr>
+      <th>Timber</th>
+      <th>Bronze</th>
+      <th>Food</th>
+      <th>Total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scouts.each do |scout| %>
+      <tr>
+        <td><%= scout.timber %></td>
+        <td><%= scout.bronze %></td>
+        <td><%= scout.food %></td>
+        <td><%= scout.total_resources %></td>
+        <td><%= link_to 'Edit', edit_player_city_scout_path(@player, @city, scout) %></td>
+        <td><%= link_to 'Destroy', [@player, @city, scout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

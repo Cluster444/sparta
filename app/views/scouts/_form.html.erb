@@ -1,0 +1,29 @@
+<%= form_for([@player, @city, @scout]) do |f| %>
+  <% if @scout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scout.errors.count, "error") %> prohibited this scout from being saved:</h2>
+
+      <ul>
+      <% @scout.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :timber %>
+    <%= f.number_field :timber %>
+  </div>
+  <div class="field">
+    <%= f.label :bronze %>
+    <%= f.number_field :bronze %>
+  </div>
+  <div class="field">
+    <%= f.label :food %>
+    <%= f.number_field :food %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @city.name %></h1>
+<%= link_to 'Raids', player_city_raids_path(@player, @city) %>
+<%= link_to 'Scouts', player_city_scouts_path(@player, @city) %>
+
+<%= link_to 'Edit', edit_player_city_path(@player, @city) %> |
+<%= link_to 'Back', player_cities_path(@player) %>
