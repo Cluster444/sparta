@@ -11,6 +11,8 @@ class CitiesController < ApplicationController
   # GET /cities/1
   # GET /cities/1.json
   def show
+    @raids = @city.raids
+    @scouts = @city.scouts
   end
 
   # GET /cities/new
