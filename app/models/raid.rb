@@ -1,6 +1,4 @@
 class Raid < ActiveRecord::Base
-  include BattleReport
-
   belongs_to :city
   belongs_to :player
 
