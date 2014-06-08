@@ -31,8 +31,8 @@ class RaidsController < ApplicationController
 
     respond_to do |format|
       if @raid.save
-        format.html { redirect_to [@player, @city, Raid], notice: 'Raid was successfully created.' }
-        format.json { render :show, status: :created, location: [@player, @city, Raid] }
+        format.html { redirect_to [@player, @city], notice: 'Raid was successfully created.' }
+        format.json { render :show, status: :created, location: [@player, @city] }
       else
         format.html { render :new }
         format.json { render json: @raid.errors, status: :unprocessable_entity }
@@ -45,8 +45,8 @@ class RaidsController < ApplicationController
   def update
     respond_to do |format|
       if @raid.update(raid_params)
-        format.html { redirect_to [@player, @city, Raid], notice: 'Raid was successfully updated.' }
-        format.json { render :show, status: :ok, location: [@player, @city, Raid] }
+        format.html { redirect_to [@player, @city], notice: 'Raid was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@player, @city] }
       else
         format.html { render :edit }
         format.json { render json: @raid.errors, status: :unprocessable_entity }
@@ -59,7 +59,7 @@ class RaidsController < ApplicationController
   def destroy
     @raid.destroy
     respond_to do |format|
-      format.html { redirect_to [@player, @city, Raid], notice: 'Raid was successfully destroyed.' }
+      format.html { redirect_to [@player, @city], notice: 'Raid was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,6 +80,6 @@ class RaidsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def raid_params
-      params.require(:raid).permit(:timber, :bronze, :food, :capacity)
+      params.require(:raid).permit(:timber, :bronze, :food, :capacity, :raided_at)
     end
 end
