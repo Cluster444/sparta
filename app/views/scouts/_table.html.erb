@@ -12,9 +12,9 @@
   <tbody>
     <% @scouts.each do |scout| %>
       <tr>
-        <td><%= scout.timber %></td>
-        <td><%= scout.bronze %></td>
-        <td><%= scout.food %></td>
+        <td><%= scout.timber_number %></td>
+        <td><%= scout.bronze_number %></td>
+        <td><%= scout.food_number %></td>
         <td><%= scout.total_resources %></td>
         <td><%= link_to 'Edit', edit_player_city_scout_path(@player, @city, scout) %></td>
         <td><%= link_to 'Destroy', [@player, @city, scout], method: :delete, data: { confirm: 'Are you sure?' } %></td>

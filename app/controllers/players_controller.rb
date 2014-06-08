@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
-    @cities = @player.cities
+    @cities = @player.cities.decorate
   end
 
   # GET /players/new

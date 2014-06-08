@@ -1,13 +1,22 @@
 class CityDecorator < Draper::Decorator
   delegate_all
+  decorates_association :raids
+  decorates_association :scouts
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def resource_cap
+    resources = object.raids.last_week.reduce(0) do |sum,raid|
+      sum + raid.timber + raid.bronze + raid.food
+    end
+    50000 - resources
+  end
 
+  def total_raided_resources
+    object.raids.reduce(0) do |sum,raid|
+      sum + raid.timber + raid.bronze + raid.food
+    end
+  end
+
+  def location
+    "#{x}, #{y}"
+  end
 end

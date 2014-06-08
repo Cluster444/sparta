@@ -6,18 +6,18 @@
       <td>Food</td>
       <td>Total</td>
       <td>Capacity</td>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @raids.each do |raid| %>
       <tr>
-        <td><%= raid.timber %></td>
-        <td><%= raid.bronze %></td>
-        <td><%= raid.food %></td>
+        <td><%= raid.timber_number %></td>
+        <td><%= raid.bronze_number %></td>
+        <td><%= raid.food_number %></td>
         <td><%= raid.total_resources %></td>
-        <td><%= raid.capacity %> (<%= raid.capacity_pct %>%)</td>
+        <td><%= raid.capacity %> (<%= raid.capacity_pct %>)</td>
         <td><%= link_to 'Edit', edit_player_city_raid_path(@player, @city, raid) %></td>
         <td><%= link_to 'Destroy', [@player, @city, raid], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

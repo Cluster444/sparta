@@ -1,13 +1,19 @@
 class ScoutDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def timber_number
+    number_with_delimiter(model.timber)
+  end
 
+  def bronze_number
+    number_with_delimiter(model.bronze)
+  end
+
+  def food_number
+    number_with_delimiter(model.food)
+  end
+
+  def total_resources
+    number_with_delimiter(timber + bronze + food)
+  end
 end
