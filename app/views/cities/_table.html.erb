@@ -5,18 +5,19 @@
       <th>Location</th>
       <th>Resource Cap</th>
       <th>Total Resources</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @cities.each do |city| %>
       <tr>
-        <td><%= city.name %></td>
+        <td><%= link_to city.name, [@player, city] %></td>
         <td><%= "#{city.x}, #{city.y}" %></td>
         <td><%= 50000 - city.raids.last_week.map(&:total_resources).reduce(0, :+) %></td>
         <td><%= city.raids.map(&:total_resources).reduce(0, :+) %></td>
-        <td><%= link_to 'Show', [@player, city] %></td>
+        <td><%= link_to 'New Raid', [:new, @player, city, :raid] %></td>
+        <td><%= link_to 'New Scout', [:new, @player, city, :scout] %></td>
         <td><%= link_to 'Edit', edit_player_city_path(@player, city) %></td>
         <td><%= link_to 'Destroy', [@player, city], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
