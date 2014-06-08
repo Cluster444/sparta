@@ -6,6 +6,7 @@
       <td>Food</td>
       <td>Total</td>
       <td>Capacity</td>
+      <td>Report Time</td>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= raid.food_number %></td>
         <td><%= raid.total_resources %></td>
         <td><%= raid.capacity %> (<%= raid.capacity_pct %>)</td>
+        <td><%= raid.report_datetime %></td>
         <td><%= link_to 'Edit', edit_player_city_raid_path(@player, @city, raid) %></td>
         <td><%= link_to 'Destroy', [@player, @city, raid], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

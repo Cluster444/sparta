@@ -5,7 +5,8 @@
       <th>Bronze</th>
       <th>Food</th>
       <th>Total</th>
-      <th colspan="3"></th>
+      <th>Report Time</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -16,6 +17,7 @@
         <td><%= scout.bronze_number %></td>
         <td><%= scout.food_number %></td>
         <td><%= scout.total_resources %></td>
+        <td><%= scout.report_datetime %></td>
         <td><%= link_to 'Edit', edit_player_city_scout_path(@player, @city, scout) %></td>
         <td><%= link_to 'Destroy', [@player, @city, scout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

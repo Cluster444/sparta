@@ -16,4 +16,8 @@ class ScoutDecorator < Draper::Decorator
   def total_resources
     h.number_with_delimiter(timber + bronze + food)
   end
+
+  def report_datetime
+    scouted_at.strftime('%m/%d/%Y %H:%M')
+  end
 end
