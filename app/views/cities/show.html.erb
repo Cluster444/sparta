@@ -1,9 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <%= link_to 'Back', player_path(@player) %>
 <br />
 <h2 class="sub-header">
   <%= @city.name %>
+  <% if @city.level? %>
+    <span class="text-muted">(<%= @city.level %>)</span>
+  <% end %>
   <small>
     <%= link_to edit_player_city_path(@player, @city) do %>
       <span class="glyphicon glyphicon-pencil"></span>
