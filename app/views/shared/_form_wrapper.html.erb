@@ -1,0 +1,14 @@
+<div class="row">
+  <%= column columns, offset do %>
+    <div class="panel panel-default">
+      <% if title %>
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= title %></h3>
+      </div>
+      <% end %>
+      <div class="panel-body">
+        <%= yield %>
+      </div>
+    </div>
+  <% end %>
+</div>
