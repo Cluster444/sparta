@@ -5,11 +5,16 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= render 'layouts/pingdom' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
+  <link href='//fonts.googleapis.com/css?family=Droid+Serif:400,700|Open+Sans:300,400,500,600' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<%= yield %>
-
+<div class="wrapper">
+  <div class="container">
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

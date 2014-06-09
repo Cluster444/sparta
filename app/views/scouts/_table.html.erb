@@ -1,27 +1,38 @@
-<table>
-  <thead>
-    <tr>
-      <th>Timber</th>
-      <th>Bronze</th>
-      <th>Food</th>
-      <th>Total</th>
-      <th>Report Time</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @scouts.each do |scout| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Scout Reports
+    <%= link_to 'New Scout Report', [:new, @player, @city, :scout], class: 'btn btn-success pull-right' %>
+    <div class="clearfix"></div>
+  </div>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= scout.timber_number %></td>
-        <td><%= scout.bronze_number %></td>
-        <td><%= scout.food_number %></td>
-        <td><%= scout.total_resources %></td>
-        <td><%= scout.report_datetime %></td>
-        <td><%= link_to 'Edit', edit_player_city_scout_path(@player, @city, scout) %></td>
-        <td><%= link_to 'Destroy', [@player, @city, scout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Timber</th>
+        <th>Bronze</th>
+        <th>Food</th>
+        <th>Total</th>
+        <th>Report Time</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% if @scouts.none? %>
+        <tr colspan="8">
+          <td>No scout reports found.</td>
+        </tr>
+      <% end %>
+      <% @scouts.each do |scout| %>
+        <tr>
+          <td><%= scout.timber_number %></td>
+          <td><%= scout.bronze_number %></td>
+          <td><%= scout.food_number %></td>
+          <td><%= scout.total_resources %></td>
+          <td><%= scout.report_datetime %></td>
+          <td><%= link_to 'Edit', edit_player_city_scout_path(@player, @city, scout) %></td>
+          <td><%= link_to 'Destroy', [@player, @city, scout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,16 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Player', player_path(@player) %> |
-<%= link_to 'Edit City', edit_player_city_path(@player, @city) %>
+<%= link_to 'Back', player_path(@player) %>
 <br />
-<h1><%= @city.name %></h1>
+<h2 class="sub-header">
+  <%= @city.name %>
+  <small><%= link_to 'Edit', edit_player_city_path(@player, @city) %></small>
+</h1>
 
-<%= link_to 'New Raid', [:new, @player, @city, :raid] %>
-<br />
-<%= render 'raids/table' %>
-<br />
-
-<%= link_to 'New Scout', [:new, @player, @city, :scout] %>
-<br />
-<%= render 'scouts/table' %>
-
+<div class="row">
+  <div class="col-md-6">
+    <%= render 'raids/table' %>
+  </div>
+  <div class="col-md-6">
+    <%= render 'scouts/table' %>
+  </div>
+</div>

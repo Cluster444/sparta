@@ -1,28 +1,40 @@
-<table>
-  <thead>
-    <tr>
-      <td>Timber</td>
-      <td>Bronze</td>
-      <td>Food</td>
-      <td>Total</td>
-      <td>Capacity</td>
-      <td>Report Time</td>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @raids.each do |raid| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Raid Reports
+    <%= link_to 'New Raid Report', [:new, @player, @city, :raid], class: 'btn btn-success pull-right' %>
+    <div class="clearfix"></div>
+  </div>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= raid.timber_number %></td>
-        <td><%= raid.bronze_number %></td>
-        <td><%= raid.food_number %></td>
-        <td><%= raid.total_resources %></td>
-        <td><%= raid.capacity %> (<%= raid.capacity_pct %>)</td>
-        <td><%= raid.report_datetime %></td>
-        <td><%= link_to 'Edit', edit_player_city_raid_path(@player, @city, raid) %></td>
-        <td><%= link_to 'Destroy', [@player, @city, raid], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Timber</th>
+        <th>Bronze</th>
+        <th>Food</th>
+        <th>Total</th>
+        <th>Capacity</th>
+        <th>Report Time</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% if @raids.none? %>
+        <tr colspan="8">
+          <td>No raid reports found.</td>
+        </tr>
+      <% end %>
+      <% @raids.each do |raid| %>
+        <tr>
+          <td><%= raid.timber_number %></td>
+          <td><%= raid.bronze_number %></td>
+          <td><%= raid.food_number %></td>
+          <td><%= raid.total_resources %></td>
+          <td><%= raid.capacity %> (<%= raid.capacity_pct %>)</td>
+          <td><%= raid.report_datetime %></td>
+          <td><%= link_to 'Edit', edit_player_city_raid_path(@player, @city, raid) %></td>
+          <td><%= link_to 'Destroy', [@player, @city, raid], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

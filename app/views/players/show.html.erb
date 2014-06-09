@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_player_path(@player) %> |
 <br />
 
-<h1><%= @player.name %></h1>
-<h2>Cities</h2>
-<%= link_to 'New City', new_player_city_path(@player) %>
-<%= render 'cities/table' %>
+<h2>
+  <%= @player.name %>
+  <small><%= link_to 'Edit', edit_player_path(@player) %></small>
+</h2>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'cities/table' %>
+  </div>
+</div>
