@@ -6,6 +6,10 @@ class City < ActiveRecord::Base
 
   after_commit :track_level_progress
 
+  def coordinates
+    Coordinates.new(x,y)
+  end
+
 private
 
   def track_level_progress
