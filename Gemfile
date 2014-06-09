@@ -24,6 +24,7 @@ end
 group :development do
   gem 'spring'
   gem 'spring-commands-cucumber'
+  gem 'spring-commands-rspec'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
@@ -38,6 +39,7 @@ end
 group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'test_after_commit'
 end
 
 ruby "2.1.2"
