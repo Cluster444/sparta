@@ -1,4 +1,4 @@
-<%= form_for([@player, @city, @raid]) do |f| %>
+<%= form_for([@player, @city, @raid], role: 'form') do |f| %>
   <% if @raid.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@raid.errors.count, "error") %> prohibited this raid from being saved:</h2>
@@ -11,27 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :timber %>
-    <%= f.number_field :timber %>
+    <%= f.number_field :timber, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :bronze %>
-    <%= f.number_field :bronze %>
+    <%= f.number_field :bronze, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :food %>
-    <%= f.number_field :food %>
+    <%= f.number_field :food, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :capacity %>
-    <%= f.number_field :capacity %>
+    <%= f.number_field :capacity, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :raided_at %>
-    <%= f.datetime_select :raided_at %>
+    <%= f.datetime_select :raided_at, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-default' %>
+    <small><%= link_to 'Cancel', player_city_path(@player, @city) %></small>
   </div>
 <% end %>
