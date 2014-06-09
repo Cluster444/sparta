@@ -29,8 +29,16 @@
           <td><%= scout.food_number %></td>
           <td><%= scout.total_resources %></td>
           <td><%= scout.report_datetime %></td>
-          <td><%= link_to 'Edit', edit_player_city_scout_path(@player, @city, scout) %></td>
-          <td><%= link_to 'Destroy', [@player, @city, scout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <%= link_to edit_player_city_scout_path(@player, @city, scout) do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to [@player, @city, scout], method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

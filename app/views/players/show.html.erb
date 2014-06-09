@@ -1,10 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <br />
-
 <h2>
   <%= @player.name %>
-  <small><%= link_to 'Edit', edit_player_path(@player) %></small>
+  <small>
+    <%= link_to edit_player_path(@player) do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+    <% end %>
+  </small>
 </h2>
 
 <div class="row">

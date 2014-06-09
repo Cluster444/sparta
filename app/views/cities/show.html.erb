@@ -4,7 +4,11 @@
 <br />
 <h2 class="sub-header">
   <%= @city.name %>
-  <small><%= link_to 'Edit', edit_player_city_path(@player, @city) %></small>
+  <small>
+    <%= link_to edit_player_city_path(@player, @city) do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+    <% end %>
+  </small>
 </h1>
 
 <div class="row">

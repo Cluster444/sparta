@@ -24,10 +24,16 @@
         <td><%= city.resource_cap %></td>
         <td><%= city.total_raided_resources %></td>
         <td><%= city.raids.count %></td>
-        <td><%= link_to 'New Raid', [:new, @player, city, :raid] %></td>
-        <td><%= link_to 'New Scout', [:new, @player, city, :scout] %></td>
-        <td><%= link_to 'Edit', edit_player_city_path(@player, city) %></td>
-        <td><%= link_to 'Destroy', [@player, city], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to edit_player_city_path(@player, city) do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to [@player, city], method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
