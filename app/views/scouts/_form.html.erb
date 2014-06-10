@@ -1,4 +1,4 @@
-<%= form_for([@player, @city, @scout]) do |f| %>
+<%= form_for([@player, @city, @scout], role: 'form') do |f| %>
   <% if @scout.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@scout.errors.count, "error") %> prohibited this scout from being saved:</h2>
@@ -25,10 +25,10 @@
   </div>
   <div class="form-group">
     <%= f.label :scouted_at %>
-    <%= f.datetime_select :scouted_at, class: 'form-control' %>
+    <%= f.datetime_picker :scouted_at, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit class: 'btn btn-default' %>
+    <%= f.submit 'Save', class: 'btn btn-default' %>
     <small><%= link_to 'Cancel', player_city_path(@player, @city) %></small>
   </div>
 <% end %>
