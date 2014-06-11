@@ -12,8 +12,8 @@
       <th>Acropolis</th>
       <th>Location</th>
       <th>Resource Cap</th>
-      <th>Total Resources</th>
-      <th>Raids</th>
+      <th>Production</th>
+      <th>Storage</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -26,8 +26,8 @@
         <td><%= city.acropolis || 'Not Set' %></td>
         <td><%= city.location %></td>
         <td><%= city.resource_cap %></td>
-        <td><%= city.total_raided_resources %></td>
-        <td><%= city.raids.count %></td>
+        <td><%= city.timber_production %>/<%= city.bronze_production %>/<%= city.food_production %></td>
+        <td><%= city.timber_storage %>/<%= city.bronze_storage %>/<%= city.food_storage %></td>
         <td>
           <%= link_to edit_player_city_path(@player, city) do %>
             <span class="glyphicon glyphicon-pencil"></span>
