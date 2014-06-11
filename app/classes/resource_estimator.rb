@@ -19,7 +19,7 @@ class ResourceEstimator
         nil
       end
 
-    resources && [resources, @city.send("#{@resource}_storage")].min
+    resources && [resources, (@city.send("#{@resource}_storage") || 999999)].min
   end
 
   def production_since(time)
