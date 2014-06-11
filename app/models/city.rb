@@ -10,6 +10,18 @@ class City < ActiveRecord::Base
     Coordinates.new(x,y)
   end
 
+  def current_bronze
+    nil
+  end
+
+  def current_timber
+    nil
+  end
+
+  def current_food
+    nil
+  end
+
 private
 
   def track_level_progress
