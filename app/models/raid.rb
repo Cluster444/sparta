@@ -13,4 +13,12 @@ class Raid < ActiveRecord::Base
   def self.last_week
     where('raided_at > ?', Time.now - 1.week)
   end
+  
+  def resources
+    timber + bronze + food
+  end
+
+  def at_capacity?
+    resources > (capacity * 0.95 - 1).round(0)
+  end
 end

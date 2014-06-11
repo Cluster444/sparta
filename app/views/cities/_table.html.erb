@@ -29,7 +29,7 @@
         <td><%= city.resource_cap %></td>
         <td><%= city.timber_production || '---' %> / <%= city.bronze_production || '---' %> / <%= city.food_production || '---' %></td>
         <td><%= city.timber_storage || '---' %> / <%= city.bronze_storage || '---' %> / <%= city.food_storage || '---' %></td>
-        <td><%= city.current_timber || '---' %> / <%= city.current_bronze || '---' %> / <%= city.current_food || '---' %></td>
+        <td><%= city.current_resources(:timber) || '---' %> / <%= city.current_resources(:bronze) || '---' %> / <%= city.current_resources(:food) || '---' %></td>
         <td>
           <%= link_to edit_player_city_path(@player, city) do %>
             <span class="glyphicon glyphicon-pencil"></span>

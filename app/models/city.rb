@@ -10,16 +10,8 @@ class City < ActiveRecord::Base
     Coordinates.new(x,y)
   end
 
-  def current_bronze
-    nil
-  end
-
-  def current_timber
-    nil
-  end
-
-  def current_food
-    nil
+  def current_resources(kind)
+    ResourceEstimator.new(self, kind).estimate
   end
 
 private
