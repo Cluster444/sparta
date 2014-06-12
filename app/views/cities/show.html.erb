@@ -6,9 +6,7 @@
     <span class="text-muted">(<%= @city.level %>)</span>
   <% end %>
   <small>
-    <%= link_to edit_player_city_path(@player, @city) do %>
-      <span class="glyphicon glyphicon-pencil"></span>
-    <% end %>
+    <%= link_to icon('edit'), edit_player_city_path(@player, @city) %>
   </small>
 </h1>
 

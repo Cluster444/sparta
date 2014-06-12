@@ -2,9 +2,7 @@
 <h2>
   <%= @player.name %>
   <small>
-    <%= link_to edit_player_path(@player) do %>
-      <span class="glyphicon glyphicon-pencil"></span>
-    <% end %>
+    <%= link_to icon('edit'), edit_player_path(@player) %>
   </small>
 </h2>
 

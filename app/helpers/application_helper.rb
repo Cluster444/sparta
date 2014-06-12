@@ -26,4 +26,17 @@ module ApplicationHelper
     options[:class] = options[:class].join(' ').strip
     content_tag(:div, options, &block)
   end
+
+  def icon(key, options={})
+    name = case key
+           when 'edit'   then 'pencil'
+           when 'delete' then 'remove'
+           end
+    if !options[:title] && I18n.exists?("icon_title.#{key}")
+      options[:title] = I18n.t("icon_title.#{key}")
+    end
+    options[:title] ||= key.humanize
+
+    render partial: 'shared/icon', locals: {name: name, key: key, title: options[:title]}
+  end
 end
