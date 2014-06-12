@@ -10,11 +10,11 @@
       <th>Name</th>
       <th>Level</th>
       <th>Acropolis</th>
-      <th>Location</th>
       <th>Resource Cap</th>
       <th>Production</th>
       <th>Storage</th>
       <th>Current</th>
+      <th>Raid Estimate</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -25,11 +25,11 @@
         <td><%= link_to city.name, [@player, city] %></td>
         <td><%= city.level || 'Not Set' %></td>
         <td><%= city.acropolis || 'Not Set' %></td>
-        <td><%= city.location %></td>
         <td><%= city.resource_cap %></td>
         <td><%= city.timber_production || '---' %> / <%= city.bronze_production || '---' %> / <%= city.food_production || '---' %></td>
         <td><%= city.timber_storage || '---' %> / <%= city.bronze_storage || '---' %> / <%= city.food_storage || '---' %></td>
         <td><%= city.current_resources(:timber) || '---' %> / <%= city.current_resources(:bronze) || '---' %> / <%= city.current_resources(:food) || '---' %></td>
+        <td><%= city.estimated_raid_resources || '---' %></td>
         <td>
           <%= link_to icon('edit'), edit_player_city_path(@player, city) %>
         </td>
