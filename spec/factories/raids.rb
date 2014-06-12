@@ -8,5 +8,6 @@ FactoryGirl.define do
     bronze 1000
     food 1000
     capacity 5000
+    raided_at { Time.now }
   end
 end
