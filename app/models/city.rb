@@ -25,6 +25,15 @@ class City < ActiveRecord::Base
     t + b + f - (acropolis * 3)
   end
 
+  def last_battle_report_at
+    last_raid = raids.order(raided_at: :desc).first
+    last_scout = scouts.order(scouted_at: :desc).first
+    return nil unless last_raid || last_scout
+    return last_scout.scouted_at unless last_raid
+    return last_raid.raided_at unless last_scout
+    [last_raid.raided_at, last_scout.scouted_at].max
+  end
+
 private
 
   def track_level_progress
