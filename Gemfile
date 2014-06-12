@@ -42,6 +42,7 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'test_after_commit'
+  gem 'timecop'
 end
 
 ruby "2.1.2"
