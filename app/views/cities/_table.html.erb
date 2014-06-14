@@ -35,7 +35,7 @@
           <%= link_to icon('edit'), edit_player_city_path(@player, city) %>
         </td>
         <td>
-          <%= link_to icon('edit'), [@player, city], method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to icon('delete'), [@player, city], method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>
