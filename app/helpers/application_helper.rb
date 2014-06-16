@@ -31,6 +31,8 @@ module ApplicationHelper
     name = case key
            when 'edit'   then 'pencil'
            when 'delete' then 'remove'
+           when 'scout'  then 'eye-open'
+           when 'raid'   then 'tower'
            end
     if !options[:title] && I18n.exists?("icon_title.#{key}")
       options[:title] = I18n.t("icon_title.#{key}")
