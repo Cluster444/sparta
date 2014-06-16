@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610214302) do
+ActiveRecord::Schema.define(version: 20140616205119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140610214302) do
     t.integer  "timber_storage"
     t.integer  "bronze_storage"
     t.integer  "food_storage"
+    t.integer  "sort_order",                                default: 0
   end
 
   add_index "cities", ["player_id"], name: "index_cities_on_player_id", using: :btree
