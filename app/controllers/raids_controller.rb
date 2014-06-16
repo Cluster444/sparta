@@ -31,7 +31,7 @@ class RaidsController < ApplicationController
 
     respond_to do |format|
       if @raid.save
-        format.html { redirect_to [@player, @city], notice: 'Raid was successfully created.' }
+        format.html { redirect_to @player, notice: 'Raid was successfully created.' }
         format.json { render :show, status: :created, location: [@player, @city] }
       else
         format.html { render :new }
