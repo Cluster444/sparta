@@ -30,7 +30,11 @@
         <td><%= city.timber_storage || '---' %> / <%= city.bronze_storage || '---' %> / <%= city.food_storage || '---' %></td>
         <td><%= city.current_resources(:timber) || '---' %> / <%= city.current_resources(:bronze) || '---' %> / <%= city.current_resources(:food) || '---' %></td>
         <td><%= city.estimated_raid_resources || '---' %></td>
-        <td><%= time_ago_in_words city.last_battle_report_at %></td>
+        <% if city.scouts.any? or city.raids.any? %>
+          <td><%= time_ago_in_words city.last_battle_report_at %></td>
+        <% else %>
+          <td>Never</td>
+        <% end %>
         <td>
           <%= link_to icon('edit'), edit_player_city_path(@player, city) %>
         </td>
