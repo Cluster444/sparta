@@ -11,6 +11,7 @@ class PlayersController < ApplicationController
   # GET /players/1.json
   def show
     @cities = @player.cities.decorate
+    @cities = @cities.sort {|a,b| a.last_battle_report_at <=> b.last_battle_report_at}.reverse
   end
 
   # GET /players/new
