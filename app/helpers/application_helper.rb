@@ -43,7 +43,7 @@ module ApplicationHelper
   end
 
   def time_ago(time)
-    seconds_ago = Time.zone.now.to_i - time.to_i
+    seconds_ago = Time.now.to_i - time.to_i
 
     if seconds_ago < 1.hour
       pluralize(seconds_ago / 1.minute, 'minute')
