@@ -43,15 +43,15 @@ module ApplicationHelper
   end
 
   def time_ago(time)
-    seconds_ago = Time.zone.now - time
+    seconds_ago = Time.zone.now.to_i - time.to_i
 
     if seconds_ago < 1.hour
-      pluralize(seconds_ago % 1.minute, 'minute')
+      pluralize(seconds_ago / 1.minute, 'minute')
     elsif seconds_ago < 1.day
-      pluralize(seconds_ago % 1.hour, 'hour')
+      pluralize(seconds_ago / 1.hour, 'hour')
     else
-      days_ago = seconds_ago % 1.day
-      hours_ago = (seconds_ago - days_ago * 1.day) % 1.hour
+      days_ago = seconds_ago / 1.day
+      hours_ago = seconds_ago % 1.day / 1.hour
       "#{pluralize(days_ago, 'day')} #{pluralize(hours_ago, 'hour')}"
     end
   end
