@@ -15,6 +15,7 @@
       <th>Storage</th>
       <th>Current</th>
       <th>Raid Estimate</th>
+      <th>Last Report</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -31,7 +32,7 @@
         <td><%= city.current_resources(:timber) || '---' %> / <%= city.current_resources(:bronze) || '---' %> / <%= city.current_resources(:food) || '---' %></td>
         <td><%= city.estimated_raid_resources || '---' %></td>
         <% if city.scouts.any? or city.raids.any? %>
-          <td><%= time_ago_in_words city.last_battle_report_at %></td>
+          <td><%= time_ago city.last_battle_report_at %></td>
         <% else %>
           <td>Never</td>
         <% end %>
