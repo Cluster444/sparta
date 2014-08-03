@@ -1,3 +1,3 @@
 $ ->
-  $(document).on 'hidden.bs.modal', e ->
+  $(document).on 'hidden.bs.modal', (e) ->
     $(e.target).removeData 'bs.modal'
