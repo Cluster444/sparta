@@ -24,7 +24,11 @@ class ResourceEstimator
 
   def production_since(time)
     production = @city.send("#{@resource}_production")
-    
+
+    if %w(timber bronze).include? @resource && production.nil?
+      production = 100
+    end
+
     if production.nil?
       0
     else
