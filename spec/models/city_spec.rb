@@ -28,6 +28,12 @@ describe City do
       FactoryGirl.create(:scout, city: city, timber: 4000, bronze: 5000, food: 6000)
       expect(city.estimated_raid_resources).to eq 12000
     end
+
+    it 'does not subtract beyond the acropolis value' do
+      city = FactoryGirl.create(:city, acropolis: 5000)
+      FactoryGirl.create(:scout, city: city, timber: 500, bronze: 5000, food: 6000)
+      expect(city.estimated_raid_resources).to eq 1000
+    end
   end
 
   describe 'last battle report time' do

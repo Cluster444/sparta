@@ -22,7 +22,10 @@ class City < ActiveRecord::Base
     f = current_resources(:food)
     return nil unless t && b && f
 
-    t + b + f - (acropolis * 3)
+    t = [0, t - acropolis].max
+    b = [0, b - acropolis].max
+    f = [0, f - acropolis].max
+    t + b + f
   end
 
   def last_battle_report_at
