@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, except: [:index, :new, :create]
 
   # GET /players
   # GET /players.json
@@ -10,8 +10,14 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
+  end
+
+  def raiding
     @cities = @player.cities.decorate
     @cities = @cities.sort {|a,b| a.last_battle_report_at <=> b.last_battle_report_at}.reverse
+  end
+
+  def positions
   end
 
   # GET /players/new

@@ -1,0 +1,43 @@
+<h2>
+  <%= @player.name %>
+  <small><%= link_to icon('edit'), edit_player_path(@player) %></small>
+</h2>
+
+<div class="row">
+  <div class="col-md-3">
+    <h3>Current Troops</h3>
+
+    <% %w(offense defense).each do |type| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= type.humanize %></h3>
+      </div>
+      <table class="table table-condensed" data-type="<%= type %>">
+        <thead>
+          <tr>
+            <th>Unit</th>
+            <th>Qty</th>
+            <th>RValue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Unit.send(type).each do |unit| %>
+          <tr>
+            <td title="<%= unit.name %>"><%= unit.initials %></td>
+            <td><input min="0" max="99999" class="rvalue-qty form-control input-sm" type="number" data-target="<%= unit.id %>-rvalue" /></td>
+            <td><span class="rvalue pull-right" id="<%= unit.id %>-rvalue" data-rvalue="<%= unit.rvalue %>"></span></td>
+          </tr>
+          <% end %>
+          <tr>
+            <td colspan="2">Total RValue</td>
+            <td><span class="pull-right" id="total-<%= type %>-rvalue"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-9">
+  </div>
+</div>
