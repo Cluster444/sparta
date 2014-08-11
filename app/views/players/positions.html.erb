@@ -38,6 +38,41 @@
     <% end %>
   </div>
 
-  <div class="col-md-9">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Persian Position</h3>
+      </div>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <td>Cavalry</td>
+            <td>Phalanx</td>
+            <td>Heavy</td>
+            <td>Light</td>
+            <td>Power</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input min="0" max="99999" class="pp-qty" type="number" data-name="pp-cavalry" data-power="80" /></td>
+            <td><input min="0" max="99999" class="pp-qty" type="number" data-name="pp-phalanx" data-power="60" /></td>
+            <td><input min="0" max="99999" class="pp-qty" type="number" data-name="pp-heavy" data-power="40" /></td>
+            <td><input min="0" max="99999" class="pp-qty" type="number" data-name="pp-light" data-power="20" /></td>
+            <td><span id="pp-power"></span></td>
+          </tr>
+          <tr>
+            <td><span id="pp-cavalry-pct"></span></td>
+            <td><span id="pp-phalanx-pct"></span></td>
+            <td><span id="pp-heavy-pct"></span></td>
+            <td><span id="pp-light-pct"></span></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-md-3">
   </div>
 </div>
