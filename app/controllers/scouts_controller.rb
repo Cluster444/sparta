@@ -31,7 +31,7 @@ class ScoutsController < ApplicationController
 
     respond_to do |format|
       if @scout.save
-        format.html { redirect_to [@player,:raiding], notice: 'Scout was successfully created.' }
+        format.html { redirect_to [:raiding, @player], notice: 'Scout was successfully created.' }
         format.json { render :show, status: :created, location: [@player, @city] }
       else
         format.html { render :new }
