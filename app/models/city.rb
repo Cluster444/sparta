@@ -6,6 +6,15 @@ class City < ActiveRecord::Base
 
   after_commit :track_level_progress
 
+  def self.active
+    last_report_within 7.days
+  end
+
+  def self.last_report_within(time)
+    includes(:scouts, :raids).references(:scouts, :raids)
+      .where('raids.raided_at > :time OR scouts.scouted_at > :time', time: time.ago).uniq
+  end
+
   def coordinates
     Coordinates.new(x,y)
   end
