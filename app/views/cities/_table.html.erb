@@ -21,6 +21,7 @@
 
   <tbody>
     <% @cities.each do |city| %>
+      <% cache [@player,city] do %>
       <tr style="font-size: 13px;">
         <td><%= link_to city.name, [@player, city] %></td>
         <td><%= city.level.try(:to_i) || 'Not Set' %></td>
@@ -49,6 +50,7 @@
         </td>
         <% end %>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
