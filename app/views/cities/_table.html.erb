@@ -21,7 +21,6 @@
 
   <tbody>
     <% @cities.each do |city| %>
-      <% cache [@player,city] do %>
       <tr style="font-size: 13px;">
         <td><%= link_to city.name, [@player, city] %></td>
         <td><%= city.level.try(:to_i) || 'Not Set' %></td>
@@ -35,7 +34,6 @@
         <% else %>
           <td>Never</td>
         <% end %>
-        <% cache ['icon', @player.id, city.id] do %>
         <td>
           <%= link_to icon('edit'), edit_player_city_path(@player, city) %>
         </td>
@@ -48,9 +46,7 @@
         <td>
           <%= link_to icon('raid'), [:new, @player, city, :raid], data: {toggle: 'modal', target: '#modal_form'} %>
         </td>
-        <% end %>
       </tr>
-      <% end %>
     <% end %>
   </tbody>
 </table>
