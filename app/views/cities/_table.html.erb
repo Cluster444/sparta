@@ -30,7 +30,7 @@
         <td><%= city.current_resources(:timber) || '---' %> / <%= city.current_resources(:bronze) || '---' %> / <%= city.current_resources(:food) || '---' %></td>
         <td><%= city.estimated_raid_resources || '---' %></td>
         <% if city.scouts.any? or city.raids.any? %>
-          <td><%= time_ago city.last_battle_report_at %></td>
+          <td><span class="time_ago" data-time="<%= city.last_battle_report_at %>"></span></td>
         <% else %>
           <td>Never</td>
         <% end %>
