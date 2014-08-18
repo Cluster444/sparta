@@ -22,7 +22,7 @@
   <tbody>
     <% @cities.each do |city| %>
       <tr style="font-size: 13px;">
-        <td><%= link_to city.name, [@player, city] %></td>
+        <td><%= link_to city.name, [@player, city], title: "#{city.x}, #{city.y}", data: {toggle: 'tooltip'} %></td>
         <td><%= city.level.try(:to_i) || 'Not Set' %></td>
         <td><%= city.acropolis || 'Not Set' %></td>
         <td><%= city.resource_cap %></td>
