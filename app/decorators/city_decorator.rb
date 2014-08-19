@@ -4,7 +4,8 @@ class CityDecorator < Draper::Decorator
   decorates_association :scouts
 
   def resource_cap
-    resources = object.raids.last_week.reduce(0) do |sum,raid|
+    raids = object.raids.to_a.take_while {|raid| raid.reported_at > 7.days.ago}
+    resources = raids.reduce(0) do |sum,raid|
       sum + raid.timber + raid.bronze + raid.food
     end
     50000 - resources
