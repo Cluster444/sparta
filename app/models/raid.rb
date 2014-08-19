@@ -10,6 +10,10 @@ class Raid < ActiveRecord::Base
   validates :capacity,  presence: true, numericality: {only_integer: true}
   validates :reported_at, presence: true
 
+  after_create do
+    city.update(:last_battle_reported_at, reported_at)
+  end
+
   def self.last_week
     where('reported_at > ?', Time.now - 1.week)
   end

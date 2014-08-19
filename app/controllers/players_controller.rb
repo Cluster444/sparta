@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
 
   def raiding
     @cities = @player.cities.decorate
-    @cities = @cities.sort {|a,b| a.last_battle_report.reported_at <=> b.last_battle_report.reported_at}.reverse
+    @cities = @cities.sort {|a,b| a.last_battle_reported_at <=> b.last_battle_reported_at}.reverse
   end
 
   def positions
