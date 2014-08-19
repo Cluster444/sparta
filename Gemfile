@@ -24,6 +24,8 @@ group :production do
 end
 
 group :development do
+  gem 'mina'
+  gem 'mina-nginx', require: false
   gem 'spring'
   gem 'spring-commands-cucumber'
   gem 'spring-commands-rspec'
