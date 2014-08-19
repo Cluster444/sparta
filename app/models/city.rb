@@ -1,7 +1,7 @@
 class City < ActiveRecord::Base
   belongs_to :player
-  has_many :raids
-  has_many :scouts
+  has_many :raids,  -> { order(:reported_at => :desc) }
+  has_many :scouts, -> { order(:reported_at => :desc) }
   has_many :level_progresses
 
   after_commit :track_level_progress
@@ -38,8 +38,8 @@ class City < ActiveRecord::Base
   end
 
   def last_battle_report
-    last_raid = raids.order(reported_at: :desc).first
-    last_scout = scouts.order(reported_at: :desc).first
+    last_raid = raids.first
+    last_scout = scouts.first
     return nil unless last_raid || last_scout
     return last_scout unless last_raid
     return last_raid unless last_scout
