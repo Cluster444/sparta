@@ -10,6 +10,6 @@ class Scout < ActiveRecord::Base
   validates :reported_at, presence: true
 
   after_create do
-    city.update(:last_battle_reported_at, reported_at)
+    city.update(last_battle_reported_at: reported_at)
   end
 end
