@@ -6,7 +6,7 @@ app_path = "/var/www/#{app_name}"
 working_directory "#{app_path}/current"
 stderr_path "#{app_path}/shared/log/unicorn_stderr.log"
 stdout_path "#{app_path}/shared/log/unicorn_stdout.log"
-pid_file "#{app_path}/shared/pids/unicorn.pid"
+pid "#{app_path}/shared/pids/unicorn.pid"
 
 # Raise the worker processes to be cpu cores + 1 if needed
 worker_processes 2
