@@ -37,13 +37,13 @@ class City < ActiveRecord::Base
     t + b + f
   end
 
-  def last_battle_report_at
+  def last_battle_report
     last_raid = raids.order(reported_at: :desc).first
     last_scout = scouts.order(reported_at: :desc).first
     return nil unless last_raid || last_scout
-    return last_scout.reported_at unless last_raid
-    return last_raid.reported_at unless last_scout
-    [last_raid.reported_at, last_scout.reported_at].max
+    return last_scout unless last_raid
+    return last_raid unless last_scout
+    last_raid.reported_at > last_scout.reported_at ? last_raid : last_scout
   end
 
 private

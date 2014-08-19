@@ -39,7 +39,7 @@ describe City do
   describe 'last battle report time' do
     it 'returns nil if there are no raids or scouts' do
       city = FactoryGirl.create(:city)
-      expect(city.last_battle_report_at).to be_nil
+      expect(city.last_battle_report).to be_nil
     end
 
     it 'returns the last raid report time when there is no scouts' do
@@ -47,7 +47,7 @@ describe City do
       Timecop.freeze Time.parse('06/12/2014 4:00:00') do
         FactoryGirl.create(:raid, city: city, reported_at: Time.now - 2.days)
         FactoryGirl.create(:raid, city: city, reported_at: Time.now - 90.minutes)
-        expect(Time.now - city.last_battle_report_at).to eq(90.minutes)
+        expect(Time.now - city.last_battle_report.reported_at).to eq(90.minutes)
       end
     end
 
@@ -56,7 +56,7 @@ describe City do
       Timecop.freeze Time.parse('06/12/2014 4:00:00') do
         FactoryGirl.create(:scout, city: city, reported_at: Time.now - 2.days)
         FactoryGirl.create(:scout, city: city, reported_at: Time.now - 90.minutes)
-        expect(Time.now - city.last_battle_report_at).to eq(90.minutes)
+        expect(Time.now - city.last_battle_report.reported_at).to eq(90.minutes)
       end
     end
 
@@ -65,7 +65,7 @@ describe City do
       Timecop.freeze Time.parse('06/12/2014 4:00:00') do
         FactoryGirl.create(:scout, city: city, reported_at: Time.now - 2.days)
         FactoryGirl.create(:raid, city: city, reported_at: Time.now - 90.minutes)
-        expect(Time.now - city.last_battle_report_at).to eq(90.minutes)
+        expect(Time.now - city.last_battle_report.reported_at).to eq(90.minutes)
       end
     end
 
@@ -74,7 +74,7 @@ describe City do
       Timecop.freeze Time.parse('06/12/2014 4:00:00') do
         FactoryGirl.create(:raid, city: city, reported_at: Time.now - 2.days)
         FactoryGirl.create(:scout, city: city, reported_at: Time.now - 90.minutes)
-        expect(Time.now - city.last_battle_report_at).to eq(90.minutes)
+        expect(Time.now - city.last_battle_report.reported_at).to eq(90.minutes)
       end
     end
   end
