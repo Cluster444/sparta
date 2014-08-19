@@ -19,7 +19,6 @@ gem 'uglifier',                        '>= 1.3.0'
 gem 'foreman'
 
 group :production do
-  gem 'rails_12factor'
   gem 'unicorn'
 end
 
