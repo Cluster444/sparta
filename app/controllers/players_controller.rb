@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
   end
 
   def raiding
-    @cities = @player.cities.decorate
+    @cities = @player.cities.includes(:raids, :scouts).decorate
     @cities = @cities.sort {|a,b| a.last_battle_reported_at <=> b.last_battle_reported_at}.reverse
   end
 
