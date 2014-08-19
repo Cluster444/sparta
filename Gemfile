@@ -18,6 +18,7 @@ gem 'turbolinks'
 gem 'uglifier',                        '>= 1.3.0'
 gem 'foreman'
 gem 'ruby-prof'
+gem 'newrelic_rpm'
 
 group :production do
   gem 'unicorn'
