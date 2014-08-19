@@ -10,7 +10,7 @@
 #   p.response.cookies # and so on
 #
 # Here's manual for reading profiler report: http://ruby-prof.rubyforge.org/graph.txt
-class ProfilingTools
+class ProfilingTool
   attr_accessor :response
   
   def request(options = {})
@@ -40,11 +40,11 @@ class ProfilingTools
       RubyProf::GraphHtmlPrinter.new(results).print(file)
     end
  
-    File.open Rails.root.join(folder, "profile-flat.txt", 'w+' do |file|
+    File.open Rails.root.join(folder, "profile-flat.txt"), 'w+' do |file|
       RubyProf::FlatPrinter.new(results).print(file)
     end
  
-    File.open Rails.root.join(folder, "profile-tree.prof", 'w+' do |file|
+    File.open Rails.root.join(folder, "profile-tree.prof"), 'w+' do |file|
       RubyProf::CallTreePrinter.new(results).print(file)
     end
   end
