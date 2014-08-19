@@ -39,7 +39,7 @@ module ApplicationHelper
     end
     options[:title] ||= key.humanize
 
-    render partial: 'shared/icon', locals: {name: name, key: key, title: options[:title]}
+    content_tag(:span, '', class: "glyphicon glyphicon-#{name}", title: options[:title])
   end
 
   def time_ago(time)
