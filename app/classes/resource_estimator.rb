@@ -8,13 +8,13 @@ class ResourceEstimator
     last_raid  = @city.raids.last
 
     resources = 
-      if last_scout && (!last_raid || (last_scout.scouted_at > last_raid.raided_at))
-        last_scout.send(@resource) + production_since(last_scout.scouted_at)
+      if last_scout && (!last_raid || (last_scout.reported_at > last_raid.reported_at))
+        last_scout.send(@resource) + production_since(last_scout.reported_at)
       elsif last_raid && @city.acropolis && !last_raid.at_capacity?
-        @city.acropolis + production_since(last_raid.raided_at)
+        @city.acropolis + production_since(last_raid.reported_at)
       elsif last_raid && last_scout && last_raid.at_capacity?
         amount_left = last_scout.send(@resource) - (last_raid.send(@resource) * (1/0.95)).round(0)
-        amount_left + production_since(last_scout.scouted_at)
+        amount_left + production_since(last_scout.reported_at)
       else
         nil
       end

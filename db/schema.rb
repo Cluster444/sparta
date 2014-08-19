@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616205119) do
+ActiveRecord::Schema.define(version: 20140819030921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140616205119) do
     t.integer  "capacity"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "raided_at"
+    t.datetime "reported_at"
   end
 
   add_index "raids", ["city_id"], name: "index_raids_on_city_id", using: :btree
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140616205119) do
     t.integer  "food"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "scouted_at"
+    t.datetime "reported_at"
   end
 
   add_index "scouts", ["city_id"], name: "index_scouts_on_city_id", using: :btree

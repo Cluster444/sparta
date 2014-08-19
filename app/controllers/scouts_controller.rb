@@ -80,6 +80,6 @@ class ScoutsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scout_params
-      params.require(:scout).permit(:timber, :bronze, :food, :scouted_at)
+      params.require(:scout).permit(:timber, :bronze, :food, :reported_at)
     end
 end

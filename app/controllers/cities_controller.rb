@@ -11,8 +11,8 @@ class CitiesController < ApplicationController
   # GET /cities/1
   # GET /cities/1.json
   def show
-    @raids = @city.raids.order(raided_at: :desc).decorate
-    @scouts = @city.scouts.order(scouted_at: :desc).decorate
+    @raids = @city.raids.order(reported_at: :desc).decorate
+    @scouts = @city.scouts.order(reported_at: :desc).decorate
   end
 
   # GET /cities/new

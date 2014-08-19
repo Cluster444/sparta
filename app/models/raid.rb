@@ -8,10 +8,10 @@ class Raid < ActiveRecord::Base
   validates :bronze,    presence: true, numericality: {only_integer: true}
   validates :food,      presence: true, numericality: {only_integer: true}
   validates :capacity,  presence: true, numericality: {only_integer: true}
-  validates :raided_at, presence: true
+  validates :reported_at, presence: true
 
   def self.last_week
-    where('raided_at > ?', Time.now - 1.week)
+    where('reported_at > ?', Time.now - 1.week)
   end
   
   def resources

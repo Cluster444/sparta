@@ -7,5 +7,5 @@ class Scout < ActiveRecord::Base
   validates :timber,     presence: true, numericality: {only_integer: true}
   validates :bronze,     presence: true, numericality: {only_integer: true}
   validates :food,       presence: true, numericality: {only_integer: true}
-  validates :scouted_at, presence: true
+  validates :reported_at, presence: true
 end

@@ -12,7 +12,7 @@ class City < ActiveRecord::Base
 
   def self.last_report_within(time)
     includes(:scouts, :raids).references(:scouts, :raids)
-      .where('raids.raided_at > :time OR scouts.scouted_at > :time', time: time.ago).uniq
+      .where('raids.reported_at > :time OR scouts.reported_at > :time', time: time.ago).uniq
   end
 
   def coordinates
@@ -38,12 +38,12 @@ class City < ActiveRecord::Base
   end
 
   def last_battle_report_at
-    last_raid = raids.order(raided_at: :desc).first
-    last_scout = scouts.order(scouted_at: :desc).first
+    last_raid = raids.order(reported_at: :desc).first
+    last_scout = scouts.order(reported_at: :desc).first
     return nil unless last_raid || last_scout
-    return last_scout.scouted_at unless last_raid
-    return last_raid.raided_at unless last_scout
-    [last_raid.raided_at, last_scout.scouted_at].max
+    return last_scout.reported_at unless last_raid
+    return last_raid.reported_at unless last_scout
+    [last_raid.reported_at, last_scout.reported_at].max
   end
 
 private

@@ -80,6 +80,6 @@ class RaidsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def raid_params
-      params.require(:raid).permit(:timber, :bronze, :food, :capacity, :raided_at)
+      params.require(:raid).permit(:timber, :bronze, :food, :capacity, :reported_at)
     end
 end

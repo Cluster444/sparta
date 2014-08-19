@@ -64,7 +64,7 @@ namespace :unicorn do
   set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
   set :start_unicorn, %[
     cd #{deploy_to}/current
-    bundle exec unicorn -c #{deploy_to}/current/config/unicorn/production.rb -E production -D
+    SECRET_KEY_BASE=`cat #{deploy_to}/shared/config/secret` RAILS_ENV=production bundle exec unicorn -c #{deploy_to}/current/config/unicorn/production.rb -E production -D
   ]
 
   desc "Start Unicorn"

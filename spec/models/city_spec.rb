@@ -45,8 +45,8 @@ describe City do
     it 'returns the last raid report time when there is no scouts' do
       city = FactoryGirl.create(:city)
       Timecop.freeze Time.parse('06/12/2014 4:00:00') do
-        FactoryGirl.create(:raid, city: city, raided_at: Time.now - 2.days)
-        FactoryGirl.create(:raid, city: city, raided_at: Time.now - 90.minutes)
+        FactoryGirl.create(:raid, city: city, reported_at: Time.now - 2.days)
+        FactoryGirl.create(:raid, city: city, reported_at: Time.now - 90.minutes)
         expect(Time.now - city.last_battle_report_at).to eq(90.minutes)
       end
     end
@@ -54,8 +54,8 @@ describe City do
     it 'returns the last scout report time when there is no raids' do
       city = FactoryGirl.create(:city)
       Timecop.freeze Time.parse('06/12/2014 4:00:00') do
-        FactoryGirl.create(:scout, city: city, scouted_at: Time.now - 2.days)
-        FactoryGirl.create(:scout, city: city, scouted_at: Time.now - 90.minutes)
+        FactoryGirl.create(:scout, city: city, reported_at: Time.now - 2.days)
+        FactoryGirl.create(:scout, city: city, reported_at: Time.now - 90.minutes)
         expect(Time.now - city.last_battle_report_at).to eq(90.minutes)
       end
     end
@@ -63,8 +63,8 @@ describe City do
     it 'returns the last raid report when raid is newer than the last scout' do
       city = FactoryGirl.create(:city)
       Timecop.freeze Time.parse('06/12/2014 4:00:00') do
-        FactoryGirl.create(:scout, city: city, scouted_at: Time.now - 2.days)
-        FactoryGirl.create(:raid, city: city, raided_at: Time.now - 90.minutes)
+        FactoryGirl.create(:scout, city: city, reported_at: Time.now - 2.days)
+        FactoryGirl.create(:raid, city: city, reported_at: Time.now - 90.minutes)
         expect(Time.now - city.last_battle_report_at).to eq(90.minutes)
       end
     end
@@ -72,8 +72,8 @@ describe City do
     it 'returns the last scout report when the scout is newer than the last raid' do
       city = FactoryGirl.create(:city)
       Timecop.freeze Time.parse('06/12/2014 4:00:00') do
-        FactoryGirl.create(:raid, city: city, raided_at: Time.now - 2.days)
-        FactoryGirl.create(:scout, city: city, scouted_at: Time.now - 90.minutes)
+        FactoryGirl.create(:raid, city: city, reported_at: Time.now - 2.days)
+        FactoryGirl.create(:scout, city: city, reported_at: Time.now - 90.minutes)
         expect(Time.now - city.last_battle_report_at).to eq(90.minutes)
       end
     end

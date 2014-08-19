@@ -23,6 +23,6 @@ class RaidDecorator < Draper::Decorator
   end
 
   def report_datetime
-    raided_at.strftime('%m/%d/%Y %H:%M')
+    reported_at.strftime('%m/%d/%Y %H:%M')
   end
 end
