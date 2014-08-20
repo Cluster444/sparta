@@ -4,6 +4,8 @@ class City < ActiveRecord::Base
   has_many :scouts, -> { order(:reported_at => :desc) }
   has_many :level_progresses
 
+  validates :name, presence: true
+
   after_commit :track_level_progress
 
   def self.active
