@@ -83,5 +83,17 @@ describe Api::CitiesController do
   end
 
   describe '#destroy' do
+    it 'destroys the city' do
+      player = create :player
+      city = create :city, player: player
+
+      expect {
+        delete :destroy, player_id: player.id, id: city.id, format: 'json'
+      }.to change(City, :count).by -1
+
+      expect(City.find_by(id: city.id)).to be_nil
+      expect(response.body.strip).to eq ''
+      expect(response.status).to eq 204
+    end
   end
 end

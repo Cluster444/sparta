@@ -34,7 +34,7 @@ module Api
       @city = @player.cities.find params[:id]
 
       @city.destroy!
-      render :nothing
+      render nothing: true, status: :no_content
     end
 
     private
