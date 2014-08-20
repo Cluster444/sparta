@@ -10,5 +10,15 @@ Rails.application.routes.draw do
       resources :scouts
     end
   end
+
+  namespace :api, defaults: {format: 'json'} do
+    resources :players, only: [:show] do
+      resources :cities, except: [:new, :edit]  do
+        resources :raids, except: [:new, :edit]
+        resources :scouts, except: [:new, :edit]
+      end
+    end
+  end
+
   root to: redirect('/players')
 end
