@@ -4,8 +4,8 @@ class ResourceEstimator
   end
 
   def estimate
-    last_scout = @city.scouts.last
-    last_raid  = @city.raids.last
+    last_scout = @city.scouts.first
+    last_raid  = @city.raids.first
 
     resources = 
       if last_scout && (!last_raid || (last_scout.reported_at > last_raid.reported_at))
