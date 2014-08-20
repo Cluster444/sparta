@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe Api::CitiesController do
   render_views
+  let!(:player) { create :player }
 
   describe '#index' do
     it 'provides a list of cities' do
-      player = create :player
       cities = create_list :city, 2, player: player
 
       get :index, player_id: player.id, format: 'json'
@@ -19,7 +19,6 @@ describe Api::CitiesController do
 
   describe '#show' do
     it 'provides details for a city' do
-      player = create :player
       city = create :city, player: player
 
       get :show, player_id: player.id, id: city.id, format: 'json'
@@ -31,10 +30,11 @@ describe Api::CitiesController do
 
   describe '#create' do
     it 'allows a city to be created' do
-      player = create :player
       city_attrs = attributes_for :city
 
-      post :create, player_id: player.id, city: city_attrs, format: 'json'
+      expect {
+        post :create, player_id: player.id, city: city_attrs, format: 'json'
+      }.to change(City, :count).by 1
 
       city_response = JSON.parse(response.body)
       expect(response.headers).to include('Location' => api_player_city_url(player, City.last))
@@ -43,8 +43,6 @@ describe Api::CitiesController do
     end
 
     it 'responds with errors when validatiosn fail' do
-      player = create :player
-
       post :create, player_id: player.id, city: {name: ''}, format: 'json'
 
       city_response = JSON.parse(response.body)
@@ -57,7 +55,6 @@ describe Api::CitiesController do
 
   describe '#update' do
     it 'allows a city to be updated' do
-      player = create :player
       city = create :city, player: player
 
       patch :update, player_id: player.id, id: city.id, city: {name: 'Update 1'}, format: 'json'
@@ -69,7 +66,6 @@ describe Api::CitiesController do
     end
 
     it 'responds with errors when validations fail' do
-      player = create :player
       city = create :city, player: player
 
       patch :update, player_id: player.id, id: city.id, city: {name: ''}, format: 'json'
@@ -84,7 +80,6 @@ describe Api::CitiesController do
 
   describe '#destroy' do
     it 'destroys the city' do
-      player = create :player
       city = create :city, player: player
 
       expect {
