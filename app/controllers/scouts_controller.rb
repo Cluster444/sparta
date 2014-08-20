@@ -27,7 +27,6 @@ class ScoutsController < ApplicationController
   # POST /scouts.json
   def create
     @scout = @city.scouts.build(scout_params)
-    @scout.player = @player
 
     respond_to do |format|
       if @scout.save

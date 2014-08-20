@@ -27,7 +27,6 @@ class RaidsController < ApplicationController
   # POST /raids.json
   def create
     @raid = @city.raids.build(raid_params)
-    @raid.player = @player
 
     respond_to do |format|
       if @raid.save
