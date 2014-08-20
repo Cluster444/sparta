@@ -12,7 +12,7 @@ module Api
     end
 
     def create
-      @raid = @city.raids.build raid_params.merge(player: @player)
+      @raid = @city.raids.build raid_params
 
       if @raid.save
         render :show, status: :created, location: [:api, @player, @city, @raid]

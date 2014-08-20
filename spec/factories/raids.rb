@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :raid do
     city { FactoryGirl.create :city }
-    player {|raid| raid.city.player}
     timber 1000
     bronze 1000
     food 1000

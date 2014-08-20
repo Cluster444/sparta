@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :scout do
     city { FactoryGirl.create :city }
-    player {|scout| scout.city.player}
     timber 1000
     bronze 1000
     food 1000

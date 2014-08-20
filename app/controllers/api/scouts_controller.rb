@@ -12,7 +12,7 @@ module Api
     end
 
     def create
-      @scout = @city.scouts.build scout_params.merge(player: @player)
+      @scout = @city.scouts.build scout_params
 
       if @scout.save
         render :show, status: :created, location: [:api, @player, @city, @scout]

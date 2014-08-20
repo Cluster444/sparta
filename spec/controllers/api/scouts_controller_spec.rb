@@ -8,7 +8,7 @@ describe Api::ScoutsController do
 
   describe '#index' do
     it 'provides a list of scouts' do
-      scouts = create_list :scout, 2, city: city, player: player
+      scouts = create_list :scout, 2, city: city
 
       get :index, player_id: player.id, city_id: city.id, format: 'json'
 
@@ -21,7 +21,7 @@ describe Api::ScoutsController do
 
   describe '#show' do
     it 'provides details for a scout' do
-      scout = create :scout, player: player, city: city
+      scout = create :scout, city: city
 
       get :show, player_id: player.id, city_id: city.id, id: scout.id, format: 'json'
 
@@ -57,7 +57,7 @@ describe Api::ScoutsController do
 
   describe '#update' do
     it 'allows a scout to be updated' do
-      scout = create :scout, player: player, city: city
+      scout = create :scout, city: city
 
       patch :update, player_id: player.id, city_id: city.id, id: scout.id, scout: {food: 999}, format: 'json'
 
@@ -68,7 +68,7 @@ describe Api::ScoutsController do
     end
 
     it 'responds with errors when validations fail' do
-      scout = create :scout, player: player, city: city
+      scout = create :scout, city: city
 
       patch :update, player_id: player.id, city_id: city.id, id: scout.id, scout: {food: nil}, format: 'json'
 
@@ -82,7 +82,7 @@ describe Api::ScoutsController do
 
   describe '#destroy' do
     it 'destroys the scout' do
-      scout = create :scout, player: player, city: city
+      scout = create :scout, city: city
 
       expect {
         delete :destroy, player_id: player.id, city_id: city.id, id: scout.id, format: 'json'

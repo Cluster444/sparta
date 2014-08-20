@@ -8,7 +8,7 @@ describe Api::RaidsController do
 
   describe '#index' do
     it 'provides a list of raids' do
-      raids = create_list :raid, 2, city: city, player: player
+      raids = create_list :raid, 2, city: city
 
       get :index, player_id: player.id, city_id: city.id, format: 'json'
 
@@ -21,7 +21,7 @@ describe Api::RaidsController do
 
   describe '#show' do
     it 'provides details for a raid' do
-      raid = create :raid, player: player, city: city
+      raid = create :raid, city: city
 
       get :show, player_id: player.id, city_id: city.id, id: raid.id, format: 'json'
 
@@ -57,7 +57,7 @@ describe Api::RaidsController do
 
   describe '#update' do
     it 'allows a raid to be updated' do
-      raid = create :raid, player: player, city: city
+      raid = create :raid, city: city
 
       patch :update, player_id: player.id, city_id: city.id, id: raid.id, raid: {food: 999}, format: 'json'
 
@@ -68,7 +68,7 @@ describe Api::RaidsController do
     end
 
     it 'responds with errors when validations fail' do
-      raid = create :raid, player: player, city: city
+      raid = create :raid, city: city
 
       patch :update, player_id: player.id, city_id: city.id, id: raid.id, raid: {food: nil}, format: 'json'
 
@@ -82,7 +82,7 @@ describe Api::RaidsController do
 
   describe '#destroy' do
     it 'destroys the raid' do
-      raid = create :raid, player: player, city: city
+      raid = create :raid, city: city
 
       expect {
         delete :destroy, player_id: player.id, city_id: city.id, id: raid.id, format: 'json'
