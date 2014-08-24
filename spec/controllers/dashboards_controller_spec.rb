@@ -4,6 +4,12 @@ RSpec.describe DashboardsController, :type => :controller do
   let(:player) { create :player }
 
   describe '#raiding' do
+    it 'makes a raiding view available for the template' do
+      get :raiding, id: player.id
+
+      expect(assigns(:view)).to be_a RaidingView
+    end
+
     context 'when there are no cities' do
       it 'then @cities is empty' do
         get :raiding, id: player.id
