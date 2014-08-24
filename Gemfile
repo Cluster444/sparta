@@ -35,6 +35,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'rspec-activemodel-mocks'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'byebug'
