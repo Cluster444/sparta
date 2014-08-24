@@ -1,42 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe DashboardsController, :type => :controller do
-  let(:player) { create :player }
+  let(:player) { stub_model(Player) }
+
+  before do
+    allow(Player).to receive(:find).with(player.id.to_s).and_return(player)
+  end
 
   describe '#raiding' do
     it 'makes a raiding view available for the template' do
       get :raiding, id: player.id
 
-      expect(assigns(:view)).to be_a RaidingView
+      expect(assigns(:raiding_view)).to be_a RaidingView
     end
 
-    context 'when there are no cities' do
-      it 'then @cities is empty' do
-        get :raiding, id: player.id
+    it 'passes the view context and a player to the raiding view' do
+      allow(RaidingView).to receive(:new)
 
-        expect(assigns(:cities)).to be_empty
-      end
-    end
+      get :raiding, id: player.id
 
-    context 'when there are cities that belong to the current player' do
-      let!(:cities) { create_list :city, 2, player: player }
-
-      it 'then @cities contains the players cities' do
-        get :raiding, id: player.id
-
-        expect(assigns(:cities)).to contain_exactly(*cities)
-      end
-
-      context 'and cities that belong to other players' do
-        it 'then @cities contains only the current players cities' do
-          other_player = create :player
-          other_cities = create_list :city, 2, player: other_player
-
-          get :raiding, id: player.id
-
-          expect(assigns(:cities)).to contain_exactly(*cities)
-        end
-      end
+      expect(RaidingView).to have_received(:new).with(player)
     end
   end
 end

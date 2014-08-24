@@ -1,4 +1,5 @@
 class RaidingView
-  def initialize(view_context)
+  def initialize(player)
+    @player = player
   end
 end
