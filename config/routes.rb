@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root to: 'pages#show', id: 'home'
+
+  devise_for :users, controllers: {
+    sessions: "sessions",
+    registrations: "registrations"
+  }
+
   resources :players do
     member do
       get :raiding
@@ -19,6 +26,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  root to: redirect('/players')
 end
