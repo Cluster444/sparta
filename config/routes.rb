@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :players do
     member do
-      get :raiding, to: 'dashboards#raiding'
+      get :raiding
       get :positions
     end
 
