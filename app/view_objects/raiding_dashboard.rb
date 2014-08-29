@@ -1,4 +1,4 @@
-class RaidingView
+class RaidingDashboard
   def initialize(player)
     @player = player
   end

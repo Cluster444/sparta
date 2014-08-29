@@ -11,15 +11,15 @@ RSpec.describe DashboardsController, :type => :controller do
     it 'makes a raiding view available for the template' do
       get :raiding, id: player.id
 
-      expect(assigns(:raiding_view)).to be_a RaidingView
+      expect(assigns(:raiding_dashboard)).to be_a RaidingDashboard
     end
 
     it 'passes the view context and a player to the raiding view' do
-      allow(RaidingView).to receive(:new)
+      allow(RaidingDashboard).to receive(:new)
 
       get :raiding, id: player.id
 
-      expect(RaidingView).to have_received(:new).with(player)
+      expect(RaidingDashboard).to have_received(:new).with(player)
     end
   end
 end
