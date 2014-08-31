@@ -5,6 +5,8 @@ RSpec.shared_examples_for 'an authenticated controller' do |actions|
         it 'denies access' do
           begin
             send(method, action, params)
+          rescue ActionController::UrlGenerationError => e
+            raise e
           rescue => e
             raise "Expected #{method.upcase} #{action} to require authentication, but it did not"
           end
