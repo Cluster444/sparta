@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     registrations: "registrations"
   }
 
-  resources :players do
+  resources :players, except: [:new, :create, :destroy] do
     member do
       get :raiding
       get :positions

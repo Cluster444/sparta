@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
-  before_action :set_player, except: [:index, :new, :create]
+  before_action :authenticate_user!
+  before_action :set_player, except: [:index]
 
   # GET /players
   # GET /players.json

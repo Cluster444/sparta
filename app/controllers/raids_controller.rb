@@ -1,4 +1,5 @@
 class RaidsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_player
   before_action :set_city
   before_action :set_raid, only: [:show, :edit, :update, :destroy]
