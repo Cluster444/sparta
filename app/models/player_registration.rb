@@ -13,6 +13,7 @@ class PlayerRegistration
   def save
     if valid?
       @user.save!
+      @player.user = @user
       @player.save!
       true
     else

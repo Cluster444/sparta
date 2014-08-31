@@ -33,6 +33,11 @@ RSpec.describe PlayerRegistration do
     it 'returns true from save' do
       expect(subject.save).to eq(true)
     end
+
+    it 'relates the player to the user' do
+      subject.save
+      expect(subject.player.user).to eq(subject.user)
+    end
   end
 
   context 'when creating a player with missing email' do
