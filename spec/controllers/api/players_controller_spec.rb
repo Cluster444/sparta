@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::PlayersController do
+RSpec.describe Api::PlayersController do
   render_views
 
   describe '#show' do

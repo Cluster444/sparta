@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::ScoutsController do
+RSpec.describe Api::ScoutsController do
   render_views
 
   let!(:player) { create :player }

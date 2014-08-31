@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::CitiesController do
+RSpec.describe Api::CitiesController do
   render_views
   let!(:player) { create :player }
 

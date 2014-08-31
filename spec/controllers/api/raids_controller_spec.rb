@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::RaidsController do
+RSpec.describe Api::RaidsController do
   render_views
 
   let!(:player) { create :player }

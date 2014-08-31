@@ -1,7 +1,7 @@
 require 'spec_helper'
 require './app/classes/resource_estimator'
 
-describe ResourceEstimator do
+RSpec.describe ResourceEstimator do
   it 'returns nil if the city has no scout or raid reports' do
     city = double('City', raids: [], scouts: [])
 

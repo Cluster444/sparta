@@ -6,7 +6,7 @@ require './app/helpers/application_helper.rb'
 include ApplicationHelper
 include ActionView::Helpers::TextHelper
 
-describe ApplicationHelper do
+RSpec.describe ApplicationHelper do
   describe '#time_ago' do
     it 'returns the number of minutes for times less than an hour' do
       time = Time.now - 35.minutes

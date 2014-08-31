@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe City do
+RSpec.describe City do
   it 'creates a level progress when setting the level on create' do
     expect { FactoryGirl.create(:city, level: 5.5) }.to change(LevelProgress, :count).by 1
     expect(LevelProgress.last.level).to eq 5.5
