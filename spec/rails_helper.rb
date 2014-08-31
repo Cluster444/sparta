@@ -40,4 +40,7 @@ RSpec.configure do |config|
 
   # Make factory_girl methods available to specs
   config.include FactoryGirl::Syntax::Methods
+
+  # Add Devise test helpers for controllers
+  config.include Devise::TestHelpers, type: 'controller'
 end
