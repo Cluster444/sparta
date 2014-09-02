@@ -1,5 +1,6 @@
 require 'byebug'
 require 'active_support/all'
+require 'cancan/matchers'
 
 RSpec.configure do |config|
   # No more monkey business!
