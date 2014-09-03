@@ -6,6 +6,7 @@ RSpec.describe Ability do
     subject { Ability.new(user) }
     it { is_expected.not_to be_able_to(:manage, :all) }
 
+    it { is_expected.not_to be_able_to(:index, Player) }
     it { is_expected.not_to be_able_to(:create, Player) }
     it { is_expected.to be_able_to(:create, City) }
     it { is_expected.to be_able_to(:create, Raid) }
@@ -17,7 +18,7 @@ RSpec.describe Ability do
       let(:raid) { stub_model(Raid, city_id: city.id, city: city) }
       let(:scout) { stub_model(Scout, city_id: city.id, city: city) }
 
-      it { is_expected.to be_able_to(:read, player) }
+      it { is_expected.to be_able_to(:show, player) }
       it { is_expected.to be_able_to(:edit, player) }
       it { is_expected.not_to be_able_to(:destroy, player) }
 
