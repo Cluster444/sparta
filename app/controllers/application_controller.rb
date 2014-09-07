@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   layout proc {|c| c.request.xhr? ? false : 'application'}
+
+  rescue_from CanCan::AccessDenied do
+    redirect_to new_user_session_path, alert: 'Sign in to continue'
+  end
 end
