@@ -12,6 +12,8 @@ RSpec.describe PlayersController do
   }
 
   describe 'authorization' do
+    before { bypass_rescue }
+
     context 'when a user is signed in' do
       before { sign_in user }
 
