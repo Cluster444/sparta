@@ -9,6 +9,7 @@ class Raid < ActiveRecord::Base
   validates :reported_at, presence: true
 
   after_create do
+    # FIXME Move this into RaidsController#create
     city.update(last_battle_reported_at: reported_at)
   end
 
