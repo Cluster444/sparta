@@ -38,5 +38,13 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :timezone, 'Time Zone' %>
+        <%= f.time_zone_select :timezone %>
+      </div>
+    </div>
+  </div>
   <%= f.submit 'Save' %>
 <% end %>
