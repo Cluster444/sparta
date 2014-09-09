@@ -13,6 +13,8 @@ class Raid < ActiveRecord::Base
     city.update(last_battle_reported_at: reported_at)
   end
 
+  before_create :calculate_expires_at
+
   def self.last_week
     where('reported_at > ?', Time.now - 1.week)
   end
@@ -23,5 +25,11 @@ class Raid < ActiveRecord::Base
 
   def at_capacity?
     resources > (capacity * 0.95 - 1).round(0)
+  end
+
+  private
+
+  def calculate_expires_at
+    self.expires_at = reported_at.utc.midnight + 7.days
   end
 end
