@@ -13,6 +13,7 @@
         <th>Total</th>
         <th>Capacity</th>
         <th>Report Time</th>
+        <th>Expires At</th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -31,6 +32,7 @@
           <td><%= raid.total_resources %></td>
           <td><%= raid.capacity %> (<%= raid.capacity_pct %>)</td>
           <td><%= raid.report_datetime %></td>
+          <td><%= raid.expiry_datetime %></td>
           <td>
             <%= link_to icon('edit'), edit_player_city_raid_path(@player, @city, raid) %>
           </td>

@@ -25,4 +25,8 @@ class RaidDecorator < Draper::Decorator
   def report_datetime
     reported_at.strftime('%m/%d/%Y %H:%M')
   end
+
+  def expiry_datetime
+    expires_at.strftime('%m/%d/%Y %H:%M')
+  end
 end
